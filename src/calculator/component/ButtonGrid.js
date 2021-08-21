@@ -21,20 +21,8 @@ const ButtonGrid = ({ buttonItems }) => {
       case "=":
         dispatch(actions.evaluate());
         break;
-      case "X":
-        dispatch(actions.setInputValue("*"));
-        break;
-      case "÷":
-        dispatch(actions.setInputValue("/"));
-        break;
       case "()":
         dispatch(actions.toggleParenthesesOpen());
-        break;
-      case "이전":
-        dispatch(actions.toggleInputMode());
-        break;
-      case "지우기":
-        dispatch(actions.erase());
         break;
       default:
         dispatch(actions.setInputValue(value));
@@ -42,14 +30,14 @@ const ButtonGrid = ({ buttonItems }) => {
   };
   return (
     <div className="button-grid">
-      {buttonItems.map(({ value, type }) => (
+      {buttonItems.map(({ value, type, label }) => (
         <button
-          className={type == "toolbar" ? "button-toolbar" : "button-dial"}
+          className="button-dial"
           onClick={type == "num" ? numClick : utilClick}
           value={value}
           key={value}
         >
-          {value}
+          {label ? label : value}
         </button>
       ))}
     </div>

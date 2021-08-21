@@ -1,13 +1,23 @@
-import ButtonGrid from "../component/ButtonGrid";
+import { ClockCircleFilled, CaretLeftFilled } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { actions } from "../state";
 
 const Toolbar = () => {
+  const dispatch = useDispatch();
+  const history = () => {
+    document.getElementById("input-panel").focus();
+    dispatch(actions.toggleInputMode());
+  };
+  const erase = () => {
+    document.getElementById("input-panel").focus();
+    dispatch(actions.erase());
+  };
+
   return (
-    <ButtonGrid
-      buttonItems={[
-        { value: "이전", type: "toolbar" },
-        { value: "지우기", type: "toolbar" },
-      ]}
-    />
+    <div className="button-grid">
+      <ClockCircleFilled className="button-toolbar" onClick={history} />
+      <CaretLeftFilled className="button-toolbar" onClick={erase} />
+    </div>
   );
 };
 

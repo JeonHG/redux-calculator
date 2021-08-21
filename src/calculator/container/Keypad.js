@@ -8,7 +8,7 @@ const Keypad = () => {
           { value: "C", type: "util" },
           { value: "()", type: "util" },
           { value: "%", type: "util" },
-          { value: "÷", type: "util" },
+          { value: "/", type: "util", label: "÷" },
         ]}
       />
       <ButtonGrid
@@ -16,7 +16,7 @@ const Keypad = () => {
           { value: "7", type: "num" },
           { value: "8", type: "num" },
           { value: "9", type: "num" },
-          { value: "X", type: "util" },
+          { value: "*", type: "util", label: "X" },
         ]}
       />
       <ButtonGrid

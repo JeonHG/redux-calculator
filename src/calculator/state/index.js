@@ -32,12 +32,18 @@ const reducers = {
   evaluate: (state) => {
     if (state.inputValue) {
       try {
-        state.outputValue = eval(state.inputValue);
+        const result = eval(state.inputValue);
+        if (Number.isInteger(result)) {
+          state.outputValue = parseInt(result);
+        } else {
+          state.outputValue = result.toFixed(3);
+        }
         state.resultsList = state.resultsList.concat({
           expression: state.inputValue,
           result: state.outputValue,
         });
       } catch (e) {
+        console.log(e);
         state.errorMessage = e.message;
       }
     } else {
