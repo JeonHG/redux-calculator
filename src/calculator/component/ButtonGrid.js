@@ -11,7 +11,12 @@ const ButtonGrid = ({ buttonItems }) => {
     document.getElementById("input-panel").focus();
     switch (value) {
       case "C":
-        dispatch(actions.initState());
+        dispatch(
+          actions.setValues([
+            { key: "inputValue", value: "" },
+            { key: "outputValue", value: "0" },
+          ])
+        );
         break;
       case "=":
         dispatch(actions.evaluate());
@@ -26,7 +31,7 @@ const ButtonGrid = ({ buttonItems }) => {
         dispatch(actions.toggleParenthesesOpen());
         break;
       case "이전":
-        console.log("이전");
+        dispatch(actions.toggleInputMode());
         break;
       case "지우기":
         dispatch(actions.erase());

@@ -4,8 +4,10 @@ const SLICE_NAME = "calculator";
 const initialState = {
   isLoading: false,
   inputValue: "",
+  inputMode: true,
   outputValue: 0,
   parenthesesOpen: false,
+  resultsList: [],
 };
 
 const reducers = {
@@ -18,6 +20,9 @@ const reducers = {
       return { payload: { key, value } };
     },
   },
+  setValues: (state, { payload }) => {
+    payload.map(({ key, value }) => (state[key] = value));
+  },
   setInputValue: (state, { payload }) => {
     state.inputValue = state.inputValue + payload;
   },
@@ -27,6 +32,10 @@ const reducers = {
   evaluate: (state) => {
     if (state.inputValue) {
       state.outputValue = eval(state.inputValue);
+      state.resultsList = state.resultsList.concat({
+        expression: state.inputValue,
+        result: state.outputValue,
+      });
     } else {
       state.outputValue = 0;
     }
@@ -38,6 +47,9 @@ const reducers = {
     } else {
       state.inputValue = state.inputValue + ")";
     }
+  },
+  toggleInputMode: (state) => {
+    state.inputMode = !state.inputMode;
   },
 };
 

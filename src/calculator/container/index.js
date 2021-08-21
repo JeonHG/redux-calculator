@@ -3,16 +3,16 @@ import { getState } from "../state";
 import Display from "./Display";
 import Keypad from "./Keypad";
 import Toolbar from "./Toolbar";
+import History from "./History";
 
 const Calculator = () => {
-  // const { isLoading } = useSelector((state) => getState(state));
-  // console.log(isLoading);
+  const { inputMode } = useSelector((state) => getState(state));
   return (
     <div className="content">
       <div className="calculator">
         <Display />
         <Toolbar />
-        <Keypad />
+        {inputMode ? <Keypad /> : <History />}
       </div>
     </div>
   );
