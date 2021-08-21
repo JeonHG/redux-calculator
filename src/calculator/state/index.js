@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const SLICE_NAME = "calculator";
 const initialState = {
-  isLoading: false,
+  errorMessage: "",
   inputValue: "",
   inputMode: true,
   outputValue: 0,
@@ -31,11 +31,15 @@ const reducers = {
   },
   evaluate: (state) => {
     if (state.inputValue) {
-      state.outputValue = eval(state.inputValue);
-      state.resultsList = state.resultsList.concat({
-        expression: state.inputValue,
-        result: state.outputValue,
-      });
+      try {
+        state.outputValue = eval(state.inputValue);
+        state.resultsList = state.resultsList.concat({
+          expression: state.inputValue,
+          result: state.outputValue,
+        });
+      } catch (e) {
+        state.errorMessage = e.message;
+      }
     } else {
       state.outputValue = 0;
     }
