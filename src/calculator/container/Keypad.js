@@ -5,8 +5,8 @@ const Keypad = () => {
     <>
       <ButtonGrid
         buttonItems={[
-          { value: "C", type: "util" },
-          { value: "()", type: "util" },
+          { value: "(", type: "util" },
+          { value: ")", type: "util" },
           { value: "%", type: "util" },
           { value: "/", type: "util", label: "÷" },
         ]}

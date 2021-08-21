@@ -6,7 +6,6 @@ const initialState = {
   inputValue: "",
   inputMode: true,
   outputValue: 0,
-  parenthesesOpen: false,
   resultsList: [],
 };
 
@@ -48,14 +47,6 @@ const reducers = {
       }
     } else {
       state.outputValue = 0;
-    }
-  },
-  toggleParenthesesOpen: (state) => {
-    state.parenthesesOpen = !state.parenthesesOpen;
-    if (state.parenthesesOpen) {
-      state.inputValue = state.inputValue + "(";
-    } else {
-      state.inputValue = state.inputValue + ")";
     }
   },
   toggleInputMode: (state) => {
