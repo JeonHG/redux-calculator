@@ -4,9 +4,11 @@ import { actions, getState } from "../state";
 const ButtonGrid = ({ buttonItems }) => {
   const dispatch = useDispatch();
   const numClick = ({ target: { value } }) => {
+    document.getElementById("input-panel").focus();
     dispatch(actions.setInputValue(value));
   };
   const utilClick = ({ target: { value } }) => {
+    document.getElementById("input-panel").focus();
     switch (value) {
       case "C":
         dispatch(actions.initState());

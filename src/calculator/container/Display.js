@@ -27,6 +27,7 @@ const Display = () => {
         autoSize={{ minRows: 3 }}
         value={inputValue}
         autoFocus
+        id="input-panel"
       />
       <div className="output">{outputValue}</div>
     </>
