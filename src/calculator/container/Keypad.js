@@ -37,7 +37,7 @@ const Keypad = () => {
       />
       <ButtonGrid
         buttonItems={[
-          { value: "+/-", type: "util" },
+          { value: "", type: "num" },
           { value: "0", type: "num" },
           { value: ".", type: "util" },
           { value: "=", type: "util" },

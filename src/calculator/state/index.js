@@ -5,6 +5,7 @@ const initialState = {
   isLoading: false,
   inputValue: "",
   outputValue: 0,
+  parenthesesOpen: false,
 };
 
 const reducers = {
@@ -28,6 +29,14 @@ const reducers = {
       state.outputValue = eval(state.inputValue);
     } else {
       state.outputValue = 0;
+    }
+  },
+  toggleParenthesesOpen: (state) => {
+    state.parenthesesOpen = !state.parenthesesOpen;
+    if (state.parenthesesOpen) {
+      state.inputValue = state.inputValue + "(";
+    } else {
+      state.inputValue = state.inputValue + ")";
     }
   },
 };

@@ -22,6 +22,9 @@ const ButtonGrid = ({ buttonItems }) => {
       case "÷":
         dispatch(actions.setInputValue("/"));
         break;
+      case "()":
+        dispatch(actions.toggleParenthesesOpen());
+        break;
       case "이전":
         console.log("이전");
         break;
