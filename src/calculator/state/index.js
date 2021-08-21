@@ -4,6 +4,7 @@ const SLICE_NAME = "calculator";
 const initialState = {
   isLoading: false,
   inputValue: "",
+  outputValue: 0,
 };
 
 const reducers = {
@@ -18,6 +19,13 @@ const reducers = {
   },
   setInputValue: (state, { payload }) => {
     state.inputValue = state.inputValue + payload;
+  },
+  evaluate: (state) => {
+    if (state.inputValue) {
+      state.outputValue = eval(state.inputValue);
+    } else {
+      state.outputValue = 0;
+    }
   },
 };
 

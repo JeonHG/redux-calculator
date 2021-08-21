@@ -3,11 +3,46 @@ import ButtonGrid from "../component/ButtonGrid";
 const Keypad = () => {
   return (
     <>
-      <ButtonGrid buttonItems={["C", "()", "%", "÷"]} />
-      <ButtonGrid buttonItems={["7", "8", "9", "X"]} />
-      <ButtonGrid buttonItems={["4", "5", "6", "-"]} />
-      <ButtonGrid buttonItems={["1", "2", "3", "+"]} />
-      <ButtonGrid buttonItems={["+/-", "0", ".", "="]} />
+      <ButtonGrid
+        buttonItems={[
+          { value: "C", type: "util" },
+          { value: "()", type: "util" },
+          { value: "%", type: "util" },
+          { value: "÷", type: "util" },
+        ]}
+      />
+      <ButtonGrid
+        buttonItems={[
+          { value: "7", type: "num" },
+          { value: "8", type: "num" },
+          { value: "9", type: "num" },
+          { value: "X", type: "util" },
+        ]}
+      />
+      <ButtonGrid
+        buttonItems={[
+          { value: "4", type: "num" },
+          { value: "5", type: "num" },
+          { value: "6", type: "num" },
+          { value: "-", type: "util" },
+        ]}
+      />
+      <ButtonGrid
+        buttonItems={[
+          { value: "1", type: "num" },
+          { value: "2", type: "num" },
+          { value: "3", type: "num" },
+          { value: "+", type: "util" },
+        ]}
+      />
+      <ButtonGrid
+        buttonItems={[
+          { value: "+/-", type: "util" },
+          { value: "0", type: "num" },
+          { value: ".", type: "util" },
+          { value: "=", type: "util" },
+        ]}
+      />
     </>
   );
 };

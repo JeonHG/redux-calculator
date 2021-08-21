@@ -4,7 +4,7 @@ import { Input } from "antd";
 import { getState } from "../state";
 
 const Display = () => {
-  const { inputValue } = useSelector((state) => getState(state));
+  const { inputValue, outputValue } = useSelector((state) => getState(state));
   const [result, setResult] = useState("");
   const onTextAreaChange = ({ target: { value } }) => {
     console.log(value);
@@ -19,7 +19,7 @@ const Display = () => {
         autoSize={{ minRows: 3 }}
         value={inputValue}
       />
-      <div>result: {result ? result : 0}</div>
+      <div>result: {outputValue}</div>
     </>
   );
 };
