@@ -1,4 +1,24 @@
 .calculator {
   width: 200px;
   border: 1px solid black;
+  display: block;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.textarea-input {
+  padding: 0px;
+  margin-bottom: -10px;
+  width: 100%;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  font-size: 20px;
+  font-weight: 400;
 }
