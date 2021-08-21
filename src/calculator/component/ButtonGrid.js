@@ -4,11 +4,9 @@ import { actions, getState } from "../state";
 const ButtonGrid = ({ buttonItems }) => {
   const dispatch = useDispatch();
   const numClick = ({ target: { value } }) => {
-    console.log(value);
     dispatch(actions.setInputValue(value));
   };
   const utilClick = ({ target: { value } }) => {
-    console.log(value);
     switch (value) {
       case "C":
         dispatch(actions.initState());
@@ -22,16 +20,22 @@ const ButtonGrid = ({ buttonItems }) => {
       case "÷":
         dispatch(actions.setInputValue("/"));
         break;
+      case "이전":
+        console.log("이전");
+        break;
+      case "지우기":
+        dispatch(actions.erase());
+        break;
       default:
         dispatch(actions.setInputValue(value));
     }
   };
   return (
-    <div>
+    <div className="button-grid">
       {buttonItems.map(({ value, type }) => (
         <button
-          className="button-dial"
-          onClick={type == "util" ? utilClick : numClick}
+          className={type == "toolbar" ? "button-toolbar" : "button-dial"}
+          onClick={type == "num" ? numClick : utilClick}
           value={value}
           key={value}
         >

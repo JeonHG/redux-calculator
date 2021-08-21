@@ -5,8 +5,8 @@ import Keypad from "./Keypad";
 import Toolbar from "./Toolbar";
 
 const Calculator = () => {
-  const { isLoading } = useSelector((state) => getState(state));
-  console.log(isLoading);
+  // const { isLoading } = useSelector((state) => getState(state));
+  // console.log(isLoading);
   return (
     <div className="content">
       <div className="calculator">

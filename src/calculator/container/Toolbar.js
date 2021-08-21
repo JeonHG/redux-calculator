@@ -1,7 +1,14 @@
+import ButtonGrid from "../component/ButtonGrid";
+
 const Toolbar = () => {
   return (
-    <div>툴바입니다.</div>
-  )
-}
+    <ButtonGrid
+      buttonItems={[
+        { value: "이전", type: "toolbar" },
+        { value: "지우기", type: "toolbar" },
+      ]}
+    />
+  );
+};
 
-export default Toolbar
+export default Toolbar;

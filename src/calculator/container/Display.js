@@ -1,25 +1,34 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Input } from "antd";
-import { getState } from "../state";
+import { actions, getState } from "../state";
 
 const Display = () => {
+  const dispatch = useDispatch();
   const { inputValue, outputValue } = useSelector((state) => getState(state));
-  const [result, setResult] = useState("");
-  const onTextAreaChange = ({ target: { value } }) => {
-    console.log(value);
-    setResult(value);
+  const onKeyPress = (e) => {
+    if (e.key == "Enter") {
+      dispatch(actions.evaluate());
+    } else {
+      dispatch(actions.setInputValue(e.key));
+    }
+  };
+  const onKeyDown = (e) => {
+    if (e.key == "Backspace") {
+      dispatch(actions.erase());
+    }
   };
   return (
     <>
       <Input.TextArea
-        onChange={onTextAreaChange}
+        onKeyPress={onKeyPress}
+        onKeyDown={onKeyDown}
         className="textarea-input"
         bordered={false}
         autoSize={{ minRows: 3 }}
         value={inputValue}
+        autoFocus
       />
-      <div>result: {outputValue}</div>
+      <div className="output">{outputValue}</div>
     </>
   );
 };

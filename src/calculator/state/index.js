@@ -20,6 +20,9 @@ const reducers = {
   setInputValue: (state, { payload }) => {
     state.inputValue = state.inputValue + payload;
   },
+  erase: (state) => {
+    state.inputValue = state.inputValue.slice(0, -1);
+  },
   evaluate: (state) => {
     if (state.inputValue) {
       state.outputValue = eval(state.inputValue);
