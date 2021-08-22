@@ -5,7 +5,7 @@ const ButtonGrid = ({ buttonItems }) => {
   const dispatch = useDispatch();
   const numClick = ({ target: { value } }) => {
     dispatch(actions.setInputValue(value));
-    dispatch(actions.setCursor());
+    dispatch(actions.updateCursor(1));
   };
   const utilClick = ({ target: { value } }) => {
     switch (value) {
@@ -14,7 +14,7 @@ const ButtonGrid = ({ buttonItems }) => {
         break;
       default:
         dispatch(actions.setInputValue(value));
-        dispatch(actions.setCursor());
+        dispatch(actions.updateCursor(1));
     }
   };
   return (

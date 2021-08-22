@@ -24,6 +24,7 @@ const Toolbar = () => {
   const erase = () => {
     document.getElementById("input-panel").focus();
     dispatch(actions.erase());
+    dispatch(actions.updateCursor(-1));
   };
 
   return (

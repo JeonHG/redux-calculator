@@ -64,8 +64,8 @@ const reducers = {
   toggleInputMode: (state) => {
     state.inputMode = !state.inputMode;
   },
-  setCursor: (state) => {
-    state.cursorLocation = state.cursorLocation + 1;
+  updateCursor: (state, { payload }) => {
+    state.cursorLocation = state.cursorLocation + payload;
   },
 };
 
