@@ -1,31 +1,43 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "antd";
 import { actions, getState } from "../state";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Display = () => {
   const dispatch = useDispatch();
-  const textareaRef = useRef();
-  const { inputValue, outputValue } = useSelector((state) => getState(state));
+  const textAreaRef = useRef();
+  const { inputValue, outputValue, cursorLocation } = useSelector((state) =>
+    getState(state)
+  );
+  useEffect(() => {
+    textAreaRef.current.resizableTextArea.textArea.selectionStart =
+      cursorLocation;
+    textAreaRef.current.resizableTextArea.textArea.selectionEnd =
+      cursorLocation;
+    textAreaRef.current.focus();
+  }, [cursorLocation]);
   const onKeyPress = (e) => {
     if (e.key == "Enter") {
       e.preventDefault();
       dispatch(actions.evaluate());
     }
   };
-  // const onKeyDown = (e) => {
-  //   if (e.key == "Backspace") {
-  //     dispatch(actions.erase());
-  //   }
-  // };
+  const onCursorChange = (e) => {
+    dispatch(
+      actions.setValues([
+        { key: "cursorLocation", value: e.target.selectionStart },
+      ])
+    );
+  };
   const onChange = (e) => {
     dispatch(actions.setValues([{ key: "inputValue", value: e.target.value }]));
   };
   return (
     <>
       <Input.TextArea
+        onMouseUp={onCursorChange}
         onKeyPress={onKeyPress}
-        // onKeyDown={onKeyDown}
+        onKeyUp={onCursorChange}
         onChange={onChange}
         className="textarea-input"
         bordered={false}
@@ -33,6 +45,7 @@ const Display = () => {
         value={inputValue}
         autoFocus
         id="input-panel"
+        ref={textAreaRef}
       />
       <div className="output">{outputValue}</div>
     </>

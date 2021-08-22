@@ -1,20 +1,20 @@
 import { useDispatch } from "react-redux";
-import { actions, getState } from "../state";
+import { actions } from "../state";
 
 const ButtonGrid = ({ buttonItems }) => {
   const dispatch = useDispatch();
   const numClick = ({ target: { value } }) => {
-    document.getElementById("input-panel").focus();
     dispatch(actions.setInputValue(value));
+    dispatch(actions.setCursor());
   };
   const utilClick = ({ target: { value } }) => {
-    document.getElementById("input-panel").focus();
     switch (value) {
       case "=":
         dispatch(actions.evaluate());
         break;
       default:
         dispatch(actions.setInputValue(value));
+        dispatch(actions.setCursor());
     }
   };
   return (

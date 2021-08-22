@@ -7,6 +7,7 @@ const initialState = {
   inputMode: true,
   outputValue: 0,
   resultsList: [],
+  cursorLocation: 0,
 };
 
 const reducers = {
@@ -23,10 +24,21 @@ const reducers = {
     payload.map(({ key, value }) => (state[key] = value));
   },
   setInputValue: (state, { payload }) => {
-    state.inputValue = state.inputValue + payload;
+    const targetIndex = state.cursorLocation;
+    let inputString = [
+      ...state.inputValue.split("").slice(0, targetIndex),
+      payload,
+      ...state.inputValue.split("").slice(targetIndex),
+    ].join("");
+    state.inputValue = inputString;
   },
   erase: (state) => {
-    state.inputValue = state.inputValue.slice(0, -1);
+    const targetIndex = state.cursorLocation;
+    let inputString = [
+      ...state.inputValue.split("").slice(0, targetIndex - 1),
+      ...state.inputValue.split("").slice(targetIndex),
+    ].join("");
+    state.inputValue = inputString;
   },
   evaluate: (state) => {
     if (state.inputValue) {
@@ -51,6 +63,9 @@ const reducers = {
   },
   toggleInputMode: (state) => {
     state.inputMode = !state.inputMode;
+  },
+  setCursor: (state) => {
+    state.cursorLocation = state.cursorLocation + 1;
   },
 };
 
