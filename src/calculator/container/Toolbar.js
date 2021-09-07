@@ -8,8 +8,11 @@ import { actions } from "../state";
 
 const Toolbar = () => {
   const dispatch = useDispatch();
-  const clear = () => {
+  const inputFocus = () => {
     document.getElementById("input-panel").focus();
+  };
+  const clear = () => {
+    inputFocus();
     dispatch(
       actions.setValues([
         { key: "inputValue", value: "" },
@@ -19,11 +22,11 @@ const Toolbar = () => {
     );
   };
   const history = () => {
-    document.getElementById("input-panel").focus();
+    inputFocus();
     dispatch(actions.toggleInputMode());
   };
   const erase = () => {
-    document.getElementById("input-panel").focus();
+    inputFocus();
     dispatch(actions.erase());
     dispatch(actions.updateCursor(-1));
   };

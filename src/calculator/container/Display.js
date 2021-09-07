@@ -46,6 +46,7 @@ const Display = () => {
         autoFocus
         id="input-panel"
         ref={textAreaRef}
+        inputMode="none"
       />
       <div className="output">{outputValue}</div>
     </>
