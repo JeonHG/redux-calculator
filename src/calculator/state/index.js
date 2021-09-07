@@ -65,7 +65,9 @@ const reducers = {
     state.inputMode = !state.inputMode;
   },
   updateCursor: (state, { payload }) => {
-    state.cursorLocation = state.cursorLocation + payload;
+    if (state.cursorLocation != 0 || payload != -1) {
+      state.cursorLocation = state.cursorLocation + payload;
+    }
   },
 };
 

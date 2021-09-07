@@ -14,6 +14,7 @@ const Toolbar = () => {
       actions.setValues([
         { key: "inputValue", value: "" },
         { key: "outputValue", value: "0" },
+        { key: "cursorLocation", value: 0 },
       ])
     );
   };
